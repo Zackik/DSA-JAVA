@@ -1,55 +1,24 @@
 # DSA-JAVA
 
-A collection of **Data Structures and Algorithms (DSA)** implementations and learning notes written in **Java**.
+A practical **Data Structures and Algorithms (DSA)** learning repository written in **Java**.
 
-This repository is a personal learning project focused on understanding how common data structures and algorithms work, how they are implemented, and their time/space complexity.
+This project focuses on understanding DSA through implementation, code comments, examples, and complexity analysis rather than only memorizing algorithms.
 
-## 📚 Topics Covered
+---
 
-### Data Structures
+## 📚 Contents
 
-* Dynamic Array
-* Linked List concepts
-* Queue
-* Stack concepts
-* Priority Queue concepts
-* Hash Table
-* Graph
+- Dynamic Array
+- Searching Algorithms
+- Sorting Algorithms
+- Recursion
+- Hashing concepts
+- Graph representation
+- Depth-First Search (DFS)
+- Breadth-First Search (BFS)
+- Big-O complexity
 
-  * Adjacency List
-  * Adjacency Matrix concepts
-  * Nodes
-  * Edges
-
-### Searching Algorithms
-
-* Linear Search
-* Binary Search
-* Interpolation Search
-
-### Sorting Algorithms
-
-* Bubble Sort
-* Selection Sort
-* Insertion Sort
-* Merge Sort
-* Quick Sort
-
-### Recursion
-
-* Factorial
-* Power / Exponentiation
-* Merge Sort
-* Quick Sort
-* Recursive graph traversal
-
-### Graph Algorithms
-
-* Graph representation using an Adjacency List
-* Edge checking
-* Graph traversal
-* Depth-First Search (DFS)
-* Breadth-First Search (BFS)
+> **Note:** Some topics such as Stack, Queue, Linked List, Priority Queue, Hash Table, and Adjacency Matrix are currently explored through learning notes and examples in `Main.java`. Dedicated implementations can be added as the project grows.
 
 ---
 
@@ -67,61 +36,41 @@ DSA-JAVA/
 └── README.md
 ```
 
-### `DynamicArray.java`
+### DynamicArray.java
 
-A simple implementation of a dynamic array using Java's `Object[]`.
+A custom dynamic array built with Java's `Object[]`.
 
-Implemented operations include:
+Implemented operations:
 
-```text
-add()
-insert()
-delete()
-search()
-isEmpty()
-grow()
-shrink()
-toString()
-```
+- `add()`
+- `insert()`
+- `delete()`
+- `search()`
+- `isEmpty()`
+- Automatic growth
+- Automatic shrinking
+- `toString()`
 
-The array automatically expands when its capacity is reached and can shrink when the number of elements becomes sufficiently small.
+The array starts with a configurable capacity, grows when full, and can shrink when the number of stored elements becomes small.
 
----
-
-### `Graph.java`
+### Graph.java
 
 Graph implementation using an **Adjacency List**.
 
-The class supports:
+Implemented operations:
 
-```text
-addNode()
-addEdge()
-checkEdge()
-print()
-depthFirstSearch()
-breadthFirstSearch()
-```
+- `addNode()`
+- `addEdge()`
+- `checkEdge()`
+- `print()`
+- Recursive DFS
+- Queue-based BFS
 
-Example graph:
+The graph currently uses directed edges.
 
-```text
-A → B
-B → C
-B → E
-C → D
-C → E
-E → A
-E → C
-```
+### Node.java
 
-DFS and BFS can then be performed from a selected starting node.
-
----
-
-### `Node.java`
-
-Basic graph node representation.
+Basic graph node representation:
 
 ```java
 public class Node {
@@ -134,40 +83,48 @@ public class Node {
 }
 ```
 
----
+### Main.java
 
-### `Main.java`
+The main learning and demonstration file.
 
-Contains examples and implementations of several algorithms, including:
+It contains examples and implementations for:
 
-* Searching
-* Sorting
-* Recursion
-* Hashing concepts
-* Graph traversal
-
-It also contains the `main()` method used to demonstrate the graph implementation.
+- Linear Search
+- Binary Search
+- Interpolation Search
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
+- Factorial
+- Recursive power calculation
+- Hashing concepts
+- Adjacency Matrix concepts
+- Adjacency List concepts
+- DFS
+- BFS
 
 ---
 
 # 🔎 Searching Algorithms
 
-| Algorithm            | Best Case | Average Case | Worst Case | Requirement                     |
-| -------------------- | --------: | -----------: | ---------: | ------------------------------- |
-| Linear Search        |      O(1) |         O(n) |       O(n) | None                            |
-| Binary Search        |      O(1) |     O(log n) |   O(log n) | Sorted data                     |
-| Interpolation Search |      O(1) | O(log log n) |       O(n) | Sorted, relatively uniform data |
+| Algorithm | Best | Average | Worst | Requirement |
+|---|---:|---:|---:|---|
+| Linear Search | O(1) | O(n) | O(n) | None |
+| Binary Search | O(1) | O(log n) | O(log n) | Sorted data |
+| Interpolation Search | O(1) | O(log log n)* | O(n) | Sorted, relatively uniform data |
+
+`*` Average-case interpolation search assumes approximately uniform data distribution.
 
 ### Linear Search
 
-Searches through elements sequentially.
+Checks elements one by one until the target is found.
 
 ```text
-Array:
 [10, 20, 30, 40, 50]
 
-Search:
-30
+Search: 30
 
 10 → 20 → 30 ✓
 ```
@@ -178,11 +135,9 @@ Time complexity:
 O(n)
 ```
 
----
-
 ### Binary Search
 
-Repeatedly divides a sorted array into two parts.
+Repeatedly divides a **sorted** search range in half.
 
 ```text
 [10, 20, 30, 40, 50, 60, 70]
@@ -196,65 +151,47 @@ Time complexity:
 O(log n)
 ```
 
----
-
 ### Interpolation Search
 
-Estimates the position of the target based on the values at the boundaries.
+Estimates the target position using the values at the low and high boundaries.
 
-Average complexity for uniformly distributed data:
-
-```text
-O(log log n)
-```
-
-Worst case:
+It can perform very well on uniformly distributed sorted data.
 
 ```text
-O(n)
+Average: O(log log n)
+Worst:   O(n)
 ```
 
 ---
 
 # 🔃 Sorting Algorithms
 
-| Algorithm      |       Best |    Average |      Worst |     Space |
-| -------------- | ---------: | ---------: | ---------: | --------: |
-| Bubble Sort    |       O(n) |      O(n²) |      O(n²) |      O(1) |
-| Selection Sort |      O(n²) |      O(n²) |      O(n²) |      O(1) |
-| Insertion Sort |       O(n) |      O(n²) |      O(n²) |      O(1) |
-| Merge Sort     | O(n log n) | O(n log n) | O(n log n) |      O(n) |
-| Quick Sort     | O(n log n) | O(n log n) |      O(n²) | O(log n)* |
+| Algorithm | Best | Average | Worst | Extra Space |
+|---|---:|---:|---:|---:|
+| Bubble Sort | O(n) | O(n²) | O(n²) | O(1) |
+| Selection Sort | O(n²) | O(n²) | O(n²) | O(1) |
+| Insertion Sort | O(n) | O(n²) | O(n²) | O(1) |
+| Merge Sort | O(n log n) | O(n log n) | O(n log n) | O(n) |
+| Quick Sort | O(n log n) | O(n log n) | O(n²) | O(log n)* |
 
-`*` Space complexity depends on the recursion depth and implementation.
+`*` Quick Sort's auxiliary space depends on recursion depth and pivot behavior.
 
----
+## Bubble Sort
 
-## 🫧 Bubble Sort
-
-Compares adjacent elements and swaps them when they are in the wrong order.
+Compares adjacent elements and swaps them when they are out of order.
 
 ```text
 [5, 3, 8, 1]
 
 5 > 3 → swap
 [3, 5, 8, 1]
-
-8 > 1 → swap
-[3, 5, 1, 8]
 ```
 
-Worst-case complexity:
+Worst case: **O(n²)**
 
-```text
-O(n²)
-```
+## Selection Sort
 
----
-
-## 🎯 Selection Sort
-
-Finds the minimum element and places it at the correct position.
+Finds the minimum element in the unsorted portion and places it in the correct position.
 
 ```text
 [5, 3, 8, 1]
@@ -264,41 +201,25 @@ minimum = 1
 [1, 3, 8, 5]
 ```
 
-Complexity:
+Time complexity: **O(n²)**
 
-```text
-O(n²)
-```
+## Insertion Sort
 
----
-
-## 🃏 Insertion Sort
-
-Builds the sorted portion of the array one element at a time.
+Builds the sorted portion one element at a time.
 
 ```text
 [5 | 3 8 1]
 
-3 is inserted before 5
+Insert 3:
 
 [3, 5 | 8 1]
 ```
 
-Best case:
+- Best: **O(n)**
+- Average: **O(n²)**
+- Worst: **O(n²)**
 
-```text
-O(n)
-```
-
-Worst case:
-
-```text
-O(n²)
-```
-
----
-
-## 🔀 Merge Sort
+## Merge Sort
 
 Uses the **Divide and Conquer** strategy.
 
@@ -314,105 +235,69 @@ Uses the **Divide and Conquer** strategy.
               [1 3 5 8]
 ```
 
-Complexity:
+- Time: **O(n log n)**
+- Extra space: **O(n)**
 
-```text
-Time:  O(n log n)
-Space: O(n)
-```
+## Quick Sort
 
----
-
-## ⚡ Quick Sort
-
-Uses a pivot to divide the array into partitions.
+Selects a pivot and partitions the array around it.
 
 ```text
 [8, 3, 5, 1, 7]
 
 pivot = 7
 
-smaller than 7 | pivot | larger than 7
-
-[3, 5, 1]      | 7 | [8]
+smaller       pivot       larger
+[3, 5, 1]      7           [8]
 ```
 
-Average complexity:
-
-```text
-O(n log n)
-```
-
-Worst case:
-
-```text
-O(n²)
-```
+- Best/Average: **O(n log n)**
+- Worst: **O(n²)**
 
 ---
 
 # ♻️ Recursion
 
-The project also explores recursive problem solving.
+Recursion occurs when a method calls itself to solve smaller versions of the same problem.
+
+The repository demonstrates recursion with:
 
 ### Factorial
 
-```java
+```text
 factorial(5)
+
+5 × 4 × 3 × 2 × 1 = 120
 ```
-
-Conceptually:
-
-```text
-5 × 4 × 3 × 2 × 1
-```
-
-Result:
-
-```text
-120
-```
-
----
 
 ### Power
 
-```java
+```text
 powers(2, 4)
+
+2 × 2 × 2 × 2 = 16
 ```
 
-Conceptually:
+Recursion is also used by:
 
-```text
-2 × 2 × 2 × 2
-```
-
-Result:
-
-```text
-16
-```
-
-Recursion is also used in:
-
-* Merge Sort
-* Quick Sort
-* DFS
-* Tree/graph traversal concepts
+- Merge Sort
+- Quick Sort
+- DFS
 
 ---
 
 # 🕸️ Graph
 
-The graph implementation uses an **Adjacency List**.
+The current graph implementation uses an **Adjacency List**.
 
-For example:
+Example:
 
 ```text
 A → B
-B → C → E
-C → D → E
-E → A → C
+B → C, E
+C → D, E
+D → 
+E → A, C
 ```
 
 Internally:
@@ -431,7 +316,7 @@ D → []
 E → [A, C]
 ```
 
-This representation is useful when a graph does not contain edges between every possible pair of vertices.
+The project also contains comments explaining the alternative **Adjacency Matrix** representation.
 
 ---
 
@@ -439,106 +324,138 @@ This representation is useful when a graph does not contain edges between every 
 
 ## Depth-First Search
 
-DFS explores one branch as deeply as possible before backtracking.
-
-```text
-Start
-  ↓
-A
-  ↓
-B
-  ↓
-C
-  ↓
-D
-```
-
-The implementation uses recursion.
+DFS explores a branch as deeply as possible before backtracking.
 
 Conceptually:
 
 ```text
 DFS
+ │
  ├── Visit current node
- ├── Mark as visited
+ ├── Mark it visited
  └── Recursively visit neighbors
 ```
 
----
+The current implementation uses recursion and a `boolean[]` visited array.
 
-## 🌊 Breadth-First Search
+Time complexity with an adjacency list:
 
-BFS explores a graph level by level.
+```text
+O(V + E)
+```
+
+## Breadth-First Search
+
+BFS explores the graph level by level.
 
 It uses a queue:
 
 ```text
 Queue
 
-[ A ]
-  ↓
+[A]
+ ↓
 poll A
-  ↓
-[ B, C ]
-  ↓
+ ↓
+[B, C]
+ ↓
 poll B
-  ↓
-[ C, D, E ]
+ ↓
+[C, D, E]
 ```
 
 Conceptually:
 
 ```text
 BFS
+ │
  ├── Create Queue
  ├── Add starting node
  ├── Mark it visited
- ├── Remove node from Queue
+ ├── Poll a node
  └── Add unvisited neighbors
 ```
+
+Time complexity with an adjacency list:
+
+```text
+O(V + E)
+```
+
+Where:
+
+- `V` = number of vertices
+- `E` = number of edges
 
 ---
 
 # 📊 Graph Complexity
 
-For an adjacency-list representation:
+For the current adjacency-list approach:
 
-| Operation     | Complexity |
-| ------------- | ---------: |
-| Add Node      |       O(1) |
-| Add Edge      |       O(1) |
-| DFS           |   O(V + E) |
-| BFS           |   O(V + E) |
-| Graph Storage |   O(V + E) |
+| Operation | Complexity |
+|---|---:|
+| Add Node | O(1) |
+| Add Edge | O(1) |
+| DFS | O(V + E) |
+| BFS | O(V + E) |
+| Storage | O(V + E) |
 
-Where:
+> The current DFS/BFS implementation converts neighboring `Node` objects back to indices using `ArrayList.indexOf()`. The theoretical graph traversal is O(V + E), but this implementation can introduce additional lookup overhead.
 
-* `V` = number of vertices/nodes
-* `E` = number of edges
+---
+
+# 🧪 Example Graph
+
+The current `Main.java` creates five nodes:
+
+```text
+A
+B
+C
+D
+E
+```
+
+And adds directed edges:
+
+```text
+A → B
+B → C
+B → E
+C → D
+C → E
+E → A
+E → C
+```
+
+The program then prints the graph and runs:
+
+```java
+graph.depthFirstSearch(1);
+graph.breadthFirstSearch(0);
+```
 
 ---
 
 # 🚀 Getting Started
 
-## 1. Clone the repository
+## 1. Clone
 
 ```bash
 git clone https://github.com/Zackik/DSA-JAVA.git
-```
-
-## 2. Enter the project
-
-```bash
 cd DSA-JAVA
 ```
 
-## 3. Compile
+## 2. Compile
+
+Requires a Java Development Kit (JDK).
 
 ```bash
 javac java/*.java
 ```
 
-## 4. Run
+## 3. Run
 
 ```bash
 java -cp java Main
@@ -546,80 +463,67 @@ java -cp java Main
 
 ---
 
-# 🧪 Example Output
-
-The graph demonstration prints the adjacency list and performs DFS/BFS traversal.
-
-Example structure:
-
-```text
-A -> B
-B -> C E
-C -> D E
-D ->
-E -> A C
-```
-
-DFS/BFS then print visited nodes:
-
-```text
-B = visited
-C = visited
-D = visited
-E = visited
-A = visited
-```
-
-The exact traversal order depends on the graph structure and starting node.
-
----
-
 # 🎯 Learning Goals
 
-This repository is intended to build a strong foundation in:
+This repository is designed to build a foundation in:
 
-* Data Structures
-* Algorithms
-* Big-O Analysis
-* Recursion
-* Searching
-* Sorting
-* Graph Theory
-* Graph Traversal
-* Java programming fundamentals
-* Problem-solving
+- Data Structures
+- Algorithms
+- Java programming
+- Object-Oriented Programming
+- Recursion
+- Searching
+- Sorting
+- Graph Theory
+- Graph Traversal
+- Big-O analysis
+- Problem solving
 
-The main goal is not only to memorize algorithms, but to understand **how and why they work**.
+The learning cycle is:
+
+```text
+Theory
+  ↓
+Implementation
+  ↓
+Example
+  ↓
+Complexity Analysis
+  ↓
+Practice
+  ↓
+Improve the Implementation
+```
 
 ---
 
 # 🗺️ Roadmap
 
-Planned topics for future development:
+Future topics planned for the repository:
 
-* [ ] Singly Linked List implementation
-* [ ] Doubly Linked List implementation
-* [ ] Stack implementation
-* [ ] Queue implementation
-* [ ] Circular Queue
-* [ ] Binary Search Tree
-* [ ] AVL Tree
-* [ ] Heap / Priority Queue
-* [ ] Trie
-* [ ] Hash Map implementation
-* [ ] Dijkstra's Algorithm
-* [ ] A* Search
-* [ ] Topological Sort
-* [ ] Minimum Spanning Tree
-* [ ] Union-Find / Disjoint Set
-* [ ] Dynamic Programming
-* [ ] Backtracking
-* [ ] More algorithm complexity analysis
-* [ ] Unit tests
+- [ ] Singly Linked List
+- [ ] Doubly Linked List
+- [ ] Stack implementation
+- [ ] Queue implementation
+- [ ] Circular Queue
+- [ ] Priority Queue / Heap
+- [ ] Binary Search Tree
+- [ ] AVL Tree
+- [ ] Trie
+- [ ] Hash Map implementation
+- [ ] Dijkstra's Algorithm
+- [ ] A* Search
+- [ ] Topological Sort
+- [ ] Minimum Spanning Tree
+- [ ] Union-Find / Disjoint Set
+- [ ] Dynamic Programming
+- [ ] Backtracking
+- [ ] Unit tests
+- [ ] More complexity analysis
 
 ---
 
-# 🧠 Complexity Cheat Sheet
+# 🧠 Big-O Cheat Sheet
 
 ```text
 O(1)          Constant
@@ -631,7 +535,7 @@ O(2ⁿ)         Exponential
 O(n!)         Factorial
 ```
 
-A useful general rule:
+General growth:
 
 ```text
 O(1)
@@ -653,33 +557,34 @@ O(n!)
 
 # 🛠️ Technologies
 
-* **Language:** Java
-* **Paradigm:** Object-Oriented Programming
-* **Data Structures:** Arrays, Lists, Queues, Hash Tables, Graphs
-* **Algorithms:** Searching, Sorting, Recursion, Graph Traversal
-* **Version Control:** Git / GitHub
+- **Language:** Java
+- **Paradigm:** Object-Oriented Programming
+- **Core topics:** Data Structures & Algorithms
+- **Version Control:** Git / GitHub
 
 ---
 
-# 📖 Purpose
+# 📖 Project Purpose
 
-This repository serves as a practical DSA notebook and implementation project while learning Java.
+This is a personal learning repository for practicing DSA with Java.
 
-Each implementation is intended to make the underlying algorithm easier to understand by connecting:
+The goal is to connect theoretical concepts with actual code:
 
 ```text
-Theory
+Concept
    ↓
-Implementation
+Code
    ↓
-Example
+Execution
    ↓
-Time Complexity
+Complexity
    ↓
-Space Complexity
+Debugging
    ↓
-Practice
+Understanding
 ```
+
+The repository is intentionally kept simple so that each algorithm can be studied and modified easily.
 
 ---
 
@@ -693,12 +598,12 @@ GitHub: [@Zackik](https://github.com/Zackik)
 
 ## ⭐ Contributing
 
-This is primarily a personal learning repository, but suggestions, improvements, and discussions are welcome.
+This is primarily a personal learning project.
 
-If you find an issue or have an idea for improving an implementation, feel free to open an issue or pull request.
+Suggestions, corrections, and improvements are welcome through GitHub issues or pull requests.
 
 ---
 
 ## 📄 License
 
-This project currently does not specify a license.
+No license has currently been specified for this repository.
